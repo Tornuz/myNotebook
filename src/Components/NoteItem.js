@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Card} from 'react-bootstrap';
+import {Card} from 'react-bootstrap';
 
 
 const NoteItem = (props) => {
@@ -12,7 +12,8 @@ const NoteItem = (props) => {
         <Card.Text>
           {note.description}
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <i className="fa-solid fa-trash-can mx-2"></i>
+        <i className="fa-sharp fa-regular fa-pen-to-square mx-2"></i>
       </Card.Body>
     </Card>
     
