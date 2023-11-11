@@ -65,22 +65,24 @@ const NoteState = (props) => {
       const addNote = (title, description, tag) => {
 
         const note = [
-          {"_id": "65837f5c78df909ae2dff40",
-          "user": "650d6bec40622531172b9c3c",
-          "title": "Dark Night rises",
-          "description": "You cannot escape the Darkness",
-          "tag": "personal/global",
+          {"_id": "65837f5c78df90339aesd2dff40",
+          "user": "650d6bec4062332531172b9c3c",
+          "title": title,
+          "description": description,
+          "tag": tag,
           "date": "2023-09-30T15:00:05.583Z",
           "__v": 0}
         ]
-        setNotes(notes.push(note))
+        setNotes(notes.concat(note))
       }
       
 
       // Delete a Note
 
-      const deleteNote = () => {
+      const deleteNote = (id) => {
 
+        const newNote = notes.filter((note) => {return note._id !== id})
+        setNotes(newNote)
       }
 
       // Edit a Note

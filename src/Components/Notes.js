@@ -3,7 +3,8 @@ import noteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 
 const Notes = () => {
-    const notes = useContext(noteContext)
+    const context = useContext(noteContext)
+    const {notes, addNote} = context;
   return (
     <div className="container row">
     <h2>Your Notes</h2>
