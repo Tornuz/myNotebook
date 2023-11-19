@@ -15,6 +15,7 @@ const AddNote = () => {
     const handleClick = (e) => {
       e.preventDefault();
       addNote(note.title, note.description, note.tag)
+      setNote({title: "", description: "", tag: ""})
     }
 
     const onChange = (e) => {
@@ -28,12 +29,17 @@ const AddNote = () => {
         <Form className="my-3">
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Title</Form.Label>
-            <Form.Control type="text" name='title' placeholder="Enter Title" onChange={onChange}/>
+            <Form.Control type="text" name='title' value={note.title} minLength={5} required placeholder="Enter Title" onChange={onChange}/>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Description</Form.Label>
-            <Form.Control type="text" name='description' placeholder="Description"  onChange={onChange}/>
+            <Form.Control type="text" name='description' value={note.description} minLength={5} required placeholder="Description"  onChange={onChange}/>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Tag</Form.Label>
+            <Form.Control type="text" name='tag' value={note.tag} placeholder="Tag"  onChange={onChange}/>
           </Form.Group>
 
           <Button variant="primary" type="submit" onClick={handleClick}>

@@ -5,7 +5,7 @@ import noteContext from "../context/notes/NoteContext";
 
 
 const NoteItem = (props) => {
-    const { note } = props;
+    const { note, updateNote } = props;
     const context = useContext(noteContext)
     const { deleteNote } = context;
 
@@ -22,7 +22,7 @@ const NoteItem = (props) => {
           {note.description}
         </Card.Text>
         <i onClick={handleDelete} className="fa-solid fa-trash-can mx-2"></i>
-        <i className="fa-sharp fa-regular fa-pen-to-square mx-2"></i>
+        <i onClick={() => {updateNote(note)}} className="fa-sharp fa-regular fa-pen-to-square mx-2"></i>
       </Card.Body>
     </Card>
     

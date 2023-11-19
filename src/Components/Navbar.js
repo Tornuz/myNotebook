@@ -20,17 +20,19 @@ const NavbarHome = () => {
           <LinkContainer to="/about">
             <Nav.Link href="/about">About</Nav.Link>
           </LinkContainer>
-
           </Nav>
+
+          <Nav>
+
           <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
+          <LinkContainer to="/login">
+            <Nav.Link className='btn btn-primary mx-2' href="/login">LogIn</Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/signup">
+            <Nav.Link className='btn btn-primary mx-2' href="/signup">SignUp</Nav.Link>
+          </LinkContainer>
           </Form>
+          </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import NavbarHome from "./Components/Navbar";
 import Home from "./Components/Home";
+import Login from "./Components/Login";
+import SignUp from "./Components/SignUp";
 import About from "./Components/About";
 import NoteState from "./context/notes/NoteState";
 import AlertTop from "./Components/Alert";
@@ -18,6 +20,8 @@ function App() {
           <Routes>
             <Route exact path="/home" element={<Home />} />
             <Route exact path="/about" element={<About />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/signup" element={<SignUp />} />
             <Route exact path="*" element={<Navigate to="/" />} />
           </Routes>
           </div>
