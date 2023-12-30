@@ -15,7 +15,7 @@ const NoteItem = (props) => {
 
   return (
     <div className="col-md-3 my-3">
-<Card style={{ width: '18rem' }}>
+    <Card>
       <Card.Body>
         <Card.Title>{note.title}</Card.Title>
         <Card.Text>

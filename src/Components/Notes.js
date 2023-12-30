@@ -2,8 +2,11 @@ import React, { useState, useContext, useEffect } from "react";
 import noteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 import {Button, Modal, Form} from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
-const Notes = () => {
+
+const Notes = (props) => {
+  let navigate = useNavigate()
   const context = useContext(noteContext);
   const { notes, addNote, getNotes, editNote } = context;
 
@@ -26,7 +29,11 @@ const Notes = () => {
 
 
   useEffect(() => {
-    getNotes();
+    if(localStorage.getItem('token')){
+      getNotes();
+    }else {
+      navigate("/login")
+    }
     // eslint-disable-next-line
   }, []);
   

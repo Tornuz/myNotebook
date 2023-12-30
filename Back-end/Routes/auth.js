@@ -16,6 +16,7 @@ const JWT_SECRET = 'De@thIsInevit$ble';
     body('password','Password must be atLeast 5 characters').isLength({min: 5}),
 
 ], async (req, res) => {
+    let success = false;
     const result = validationResult(req);
   if (!result.isEmpty()) {
       return res.status(400).send({ errors: result.array() });
@@ -23,7 +24,7 @@ const JWT_SECRET = 'De@thIsInevit$ble';
     try {
     let user = await User.findOne({email: req.body.email})
     if(user) {
-        return res.status(400).json({error: "Sorry a user with this email already exist"})
+        return res.status(400).json({success, error: "Sorry a user with this email already exist"})
     }
 
     const salt = await bcrypt.genSaltSync(10);
@@ -40,7 +41,8 @@ const JWT_SECRET = 'De@thIsInevit$ble';
         }
     }
     const authtoken = jwt.sign(data, JWT_SECRET)
-    res.json(authtoken)
+    success = true;
+    res.json({success, authtoken})
 }   catch(err) {
     console.error(err.message)
     res.status(500).send("Some Error Occured")}
@@ -54,6 +56,7 @@ const JWT_SECRET = 'De@thIsInevit$ble';
 
 ], async (req, res) => {
     const result = validationResult(req);
+    let success = false;
   if (!result.isEmpty()) {
       return res.send({ errors: result.array() });
     }
@@ -68,7 +71,8 @@ const JWT_SECRET = 'De@thIsInevit$ble';
 
         const passwordCompare = await bcrypt.compare(password, user.password)
         if(!passwordCompare) {
-            return res.status(400).json({error: "Your email or password is incorrect"})
+            success= false
+            return res.status(400).json({success, error: "Your email or password is incorrect"})
         }
 
         const data = {
@@ -77,7 +81,8 @@ const JWT_SECRET = 'De@thIsInevit$ble';
         }}
         
         const authtoken = jwt.sign(data, JWT_SECRET)
-        res.json(authtoken)
+        success = true;
+        res.json({success, authtoken})
     } catch(err) {
         console.error(err.message)
         res.status(500).send("Internal Server Error Occured")}

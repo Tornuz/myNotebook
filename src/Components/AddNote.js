@@ -5,8 +5,9 @@ import noteContext from "../context/notes/NoteContext";
 
 
 
-const AddNote = () => {
+const AddNote = (props) => {
 
+    const {showAlert} = props;
     const context = useContext(noteContext)
     const {addNote} = context;
 
@@ -47,7 +48,7 @@ const AddNote = () => {
           </Button>
         </Form>
       </div>
-      <Notes />
+      <Notes showAlert={showAlert} />
     </div>
   )
 }
